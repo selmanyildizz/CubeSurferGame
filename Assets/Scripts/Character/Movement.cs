@@ -5,9 +5,15 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
 
-    [SerializeField] private float forwardSpeed;
+    [SerializeField] private float forwardSpeed = 0.5f;
+    
     [SerializeField] private float leftRightMovementSpeed;
 
+
+    public float getForwardSpeed()
+    {
+        return forwardSpeed;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +24,6 @@ public class Movement : MonoBehaviour
     void Update()
     {
         float HorizontalAxis = Input.GetAxis("Horizontal") * leftRightMovementSpeed * Time.deltaTime;
-        this.transform.Translate(HorizontalAxis, 0, forwardSpeed * Time.deltaTime);
+        this.transform.Translate(HorizontalAxis, 0, getForwardSpeed() * Time.deltaTime);
     }
 }
