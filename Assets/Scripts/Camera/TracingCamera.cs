@@ -6,33 +6,33 @@ public class TracingCamera : MonoBehaviour
 {
 
     public GameObject target;
-    [SerializeField] private float smoothSpeed = 0.5f;
+
+    [SerializeField] private float lerpValue;
+    private Vector3 newPosition;
 
     public void setSmoothSpeed(float value)
     {
-        smoothSpeed = value;
+        lerpValue = value;
     }
 
-    private Movement movement;
+    private Vector3 offset;
 
-    private Vector3 offset;            //Private variable to store the offset distance between the player and camera
-                                       // Use this for initialization
-
-    private void Awake()
+    void Start()
     {
-        setSmoothSpeed(target.GetComponent<Movement>().getForwardSpeed());
+        setSmoothSpeed(target.GetComponent<Movement>().getForwardMovementSpeed());
         //Calculate and store the offset value by getting the distance between the player's position and camera's position.
         offset = transform.position - target.transform.position;
     }
-    void Start()
-    {
-        
-        Debug.Log(smoothSpeed);
-    }
 
     // Update is called once per frame
-    public void Update()
+    public void LateUpdate()
     {
-        transform.position = Vector3.Lerp(transform.position, target.transform.position + offset, Time.deltaTime * smoothSpeed);  
+        setCameraSmoothFollow();
+    }
+
+    private void setCameraSmoothFollow()
+    {
+        newPosition = Vector3.Lerp(transform.position, new Vector3(0f, target.transform.position.y, target.transform.position.z) + offset, lerpValue * Time.deltaTime);
+        transform.position = newPosition;
     }
 }

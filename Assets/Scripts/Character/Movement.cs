@@ -1,29 +1,54 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
 
-    [SerializeField] private float forwardSpeed = 0.5f;
-    
-    [SerializeField] private float leftRightMovementSpeed;
+    [SerializeField] private InputController inputController;
 
+    [SerializeField] private float forwardMovementSpeed = 0.5f;
 
-    public float getForwardSpeed()
+    [SerializeField] private float horizontalMovementSpeed = 4f;
+
+    [SerializeField] private float horizontalLimitValue = 0.15f;
+
+    private float newPositionX;
+
+    public float getForwardMovementSpeed()
     {
-        return forwardSpeed;
+        return forwardMovementSpeed;
     }
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        inputController = GetComponent<InputController>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        float HorizontalAxis = Input.GetAxis("Horizontal") * leftRightMovementSpeed * Time.deltaTime;
-        this.transform.Translate(HorizontalAxis, 0, getForwardSpeed() * Time.deltaTime);
+        setCharacterMovementForward();
+        setCharacterHorizontalMovement();
     }
+
+    private void setCharacterMovementForward()
+    {
+        transform.Translate(Vector3.forward * getForwardMovementSpeed() * Time.deltaTime);
+    }
+
+    private void setCharacterHorizontalMovement()
+    {
+        newPositionX = transform.position.x + inputController.getHorizontalValue() * horizontalMovementSpeed * Time.fixedDeltaTime;
+        if(newPositionX>= horizontalLimitValue)
+        {
+            newPositionX = 0.15f;
+        } else if(newPositionX<=-horizontalLimitValue)
+        {
+            newPositionX = -0.15f;
+        }
+        transform.position = new Vector3(newPositionX, transform.position.y, transform.position.z);
+        //float HorizontalAxis = inputController.getHorizontalValue() * horizontalMovementSpeed * Time.fixedDeltaTime;
+        //transform.Translate(HorizontalAxis, 0, getForwardMovementSpeed() * Time.fixedDeltaTime);
+    }
+
 }
