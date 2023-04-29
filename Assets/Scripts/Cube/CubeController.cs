@@ -25,7 +25,6 @@ public class CubeController : MonoBehaviour
         {
             if(!isStack)
             {
-                print("Here");
                 isStack = true;
                 stackController.increaseBlockState(gameObject);
             }
