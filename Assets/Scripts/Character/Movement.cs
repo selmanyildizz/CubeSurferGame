@@ -41,10 +41,10 @@ public class Movement : MonoBehaviour
         newPositionX = transform.position.x + inputController.getHorizontalValue() * horizontalMovementSpeed * Time.fixedDeltaTime;
         if(newPositionX>= horizontalLimitValue)
         {
-            newPositionX = 0.15f;
+            newPositionX = 0.091f;
         } else if(newPositionX<=-horizontalLimitValue)
         {
-            newPositionX = -0.15f;
+            newPositionX = -0.107f;
         }
         transform.position = new Vector3(newPositionX, transform.position.y, transform.position.z);
         //float HorizontalAxis = inputController.getHorizontalValue() * horizontalMovementSpeed * Time.fixedDeltaTime;

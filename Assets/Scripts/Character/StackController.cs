@@ -10,14 +10,7 @@ public class StackController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        blockList.Add(gameObject);
         UpdateLastBlockObject();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-       
     }
 
     public void increaseBlockState(GameObject _gameObject) {
@@ -27,6 +20,13 @@ public class StackController : MonoBehaviour
         blockList.Add(_gameObject);
         UpdateLastBlockObject();
 
+    }
+
+    public void decreaseBlockState(GameObject _gameObject)
+    {
+        _gameObject.transform.parent = null;
+        blockList.Remove(_gameObject);
+        UpdateLastBlockObject();
     }
 
     private void UpdateLastBlockObject() {

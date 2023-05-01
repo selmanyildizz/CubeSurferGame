@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class CubeController : MonoBehaviour
@@ -23,11 +24,28 @@ public class CubeController : MonoBehaviour
     {
         if(Physics.Raycast(transform.position, direction, out hit, 0.05f))
         {
-            if(!isStack)
+
+            if (!isStack)
             {
-                isStack = true;
+                isStack = !isStack;
                 stackController.increaseBlockState(gameObject);
+                SetDirection();
+            }
+
+            if (IsObstacleCube())
+            {
+                stackController.decreaseBlockState(gameObject);
             }
         }
+    }
+
+    private bool IsObstacleCube()
+    {
+        return hit.transform.CompareTag("ObstacleCube");
+    }
+
+    private void SetDirection()
+    {
+        direction = Vector3.forward;
     }
 }

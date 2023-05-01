@@ -110,13 +110,13 @@ Material:
     - _FresnelMax: 1.5
     - _FresnelMin: 0
     - _GlossMapScale: 0
-    - _Glossiness: 0
+    - _Glossiness: 0.47
     - _GlossyReflections: 0
     - _IndirectIntensity: 1
     - _IndirectIntensityOutline: 0
     - _MatCapMaskChannel: 0
     - _MatCapType: 0
-    - _Metallic: 0
+    - _Metallic: 1
     - _Mode: 0
     - _NormalsSource: 0
     - _NormalsUVType: 0
