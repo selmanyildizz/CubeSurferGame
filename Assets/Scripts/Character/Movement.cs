@@ -9,7 +9,6 @@ public class Movement : MonoBehaviour
 
     [SerializeField] private float horizontalMovementSpeed = 4f;
 
-    [SerializeField] private float horizontalLimitValue = 0.15f;
 
     private float newPositionX;
 
@@ -39,10 +38,10 @@ public class Movement : MonoBehaviour
     private void setCharacterHorizontalMovement()
     {
         newPositionX = transform.position.x + inputController.getHorizontalValue() * horizontalMovementSpeed * Time.fixedDeltaTime;
-        if(newPositionX>= horizontalLimitValue)
+        if(newPositionX>= 0.091f)
         {
             newPositionX = 0.091f;
-        } else if(newPositionX<=-horizontalLimitValue)
+        } else if(newPositionX<= -0.107f)
         {
             newPositionX = -0.107f;
         }
