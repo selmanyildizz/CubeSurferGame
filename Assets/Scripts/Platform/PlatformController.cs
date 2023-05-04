@@ -10,7 +10,7 @@ public class PlatformController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // If player is end of the road create new Environment
-        if(other.tag == "GreenCollect")
+        if(other.tag == "Player")
         {
             existPlatform = findExistGameObject(platform.prevEnvironment);
             newPlatform = createCopy(existPlatform);

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    [SerializeField] private int level = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +16,14 @@ public class GameController : MonoBehaviour
     void Update()
     {
         
+    }
+    public int getLevel()
+    {
+        return level;
+    }
+
+    public void increaseLevel()
+    {
+        level += 1;
     }
 }
