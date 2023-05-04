@@ -27,6 +27,7 @@ public class StackController : MonoBehaviour
         _gameObject.transform.parent = null;
         blockList.Remove(_gameObject);
         UpdateLastBlockObject();
+        Destroy(_gameObject, 1.5f);
     }
 
     private void UpdateLastBlockObject() {

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Movement : MonoBehaviour
 {
@@ -48,6 +49,21 @@ public class Movement : MonoBehaviour
         transform.position = new Vector3(newPositionX, transform.position.y, transform.position.z);
         //float HorizontalAxis = inputController.getHorizontalValue() * horizontalMovementSpeed * Time.fixedDeltaTime;
         //transform.Translate(HorizontalAxis, 0, getForwardMovementSpeed() * Time.fixedDeltaTime);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag== "ObstacleCube")
+            
+        {
+            Debug.Log("RESET");
+            Invoke("reset", 1f);
+        }
+
+    }
+    void reset()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);//menüye gönderiyor.
     }
 
 }
