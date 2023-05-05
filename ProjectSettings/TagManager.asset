@@ -7,7 +7,8 @@ TagManager:
   - GreenCollect
   - ObstacleCube
   - Road
-  - Environment
+  - nextEnvironment
+  - prevEnvironment
   layers:
   - Default
   - TransparentFX

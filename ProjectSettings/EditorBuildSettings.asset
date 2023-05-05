@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 5e1af808023a111419b13b125d224a88
+  - enabled: 1
+    path: Assets/Scenes/CharacterAnimation.unity
+    guid: f1d4cd21c41ee4788a1c0b10853b2366
   m_configObjects: {}

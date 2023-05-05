@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InputController : MonoBehaviour
 {
-    private float horizontalValue;
+    private float horizontalValue = 0f;
 
     public float getHorizontalValue()
     {
