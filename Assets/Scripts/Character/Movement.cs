@@ -10,6 +10,9 @@ public class Movement : MonoBehaviour
 
     [SerializeField] private float horizontalMovementSpeed = 4f;
 
+    [SerializeField] private StackController stackController;
+
+    [SerializeField] private Animator animator;
 
     private float newPositionX;
 
@@ -22,6 +25,7 @@ public class Movement : MonoBehaviour
     void Start()
     {
         inputController = GetComponent<InputController>();
+        stackController = GameObject.FindObjectOfType<StackController>();
     }
 
     // Update is called once per frame
@@ -47,17 +51,17 @@ public class Movement : MonoBehaviour
             newPositionX = -0.107f;
         }
         transform.position = new Vector3(newPositionX, transform.position.y, transform.position.z);
-        //float HorizontalAxis = inputController.getHorizontalValue() * horizontalMovementSpeed * Time.fixedDeltaTime;
-        //transform.Translate(HorizontalAxis, 0, getForwardMovementSpeed() * Time.fixedDeltaTime);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag== "ObstacleCube")
-            
+        if (other.gameObject.tag== "ObstacleCube" && stackController.blockList.Count <= 1)
         {
             Debug.Log("RESET");
-            Invoke("reset", 1f);
+            forwardMovementSpeed = 0f;
+            animator.Play("Dying");
+            // animation call
+          
         }
 
     }

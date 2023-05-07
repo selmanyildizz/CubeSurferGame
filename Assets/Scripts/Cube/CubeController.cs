@@ -36,7 +36,7 @@ public class CubeController : MonoBehaviour
             {
                 stackController.decreaseBlockState(gameObject);
             }
-        }
+        } 
     }
 
     private bool IsObstacleCube()
