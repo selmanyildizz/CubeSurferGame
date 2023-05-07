@@ -55,7 +55,7 @@ public class Movement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag== "ObstacleCube" && stackController.blockList.Count <= 1)
+        if (other.gameObject.tag== "ObstacleCube" && stackController.blockList.Count == 1)
         {
             Debug.Log("RESET");
             forwardMovementSpeed = 0f;
