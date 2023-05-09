@@ -18,7 +18,7 @@ public class FinishLineController : MonoBehaviour
         if(other.tag == "Player")
         {
             gameController.increaseLevel();
-            Debug.Log(gameController.getLevel());
+            gameController.addCubes();
         }
         
     }
