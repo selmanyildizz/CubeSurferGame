@@ -57,9 +57,8 @@ public class Movement : MonoBehaviour
     {
         if (other.gameObject.tag== "ObstacleCube" && stackController.blockList.Count == 1)
         {
-            Debug.Log("RESET");
-            forwardMovementSpeed = 0f;
-            animator.Play("Dying");
+            //forwardMovementSpeed = 0f;
+            //animator.Play("Dying");
             // animation call
           
         }
