@@ -15,7 +15,7 @@ public class ObstacleController : MonoBehaviour
     {
         if (other.tag == "Player" && stackController.blockList.Count == 1)
         {
-            Debug.Log("12");
+            Debug.Log("");
         }
     }
 }
